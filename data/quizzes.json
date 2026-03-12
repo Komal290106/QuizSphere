@@ -1,0 +1,474 @@
+{
+  "subjects": [
+    {
+      "name": "Java",
+      "quizzes": [
+        {
+          "id": 1,
+          "title": "Java Basics",
+          "time": 10,
+          "questions": [
+            {
+              "question": "What does JVM stand for?",
+              "options": ["Java Virtual Machine", "Java Variable Method", "Just Virtual Machine", "Java Verified Model"],
+              "answer": 0
+            },
+            {
+              "question": "Which method is the entry point of a Java program?",
+              "options": ["start()", "main()", "run()", "init()"],
+              "answer": 1
+            },
+            {
+              "question": "Which company originally developed Java?",
+              "options": ["Microsoft", "Sun Microsystems", "Google", "IBM"],
+              "answer": 1
+            },
+            {
+              "question": "Which keyword is used to define a class?",
+              "options": ["define", "class", "object", "struct"],
+              "answer": 1
+            },
+            {
+              "question": "Which data type is used for decimals?",
+              "options": ["int", "char", "float", "boolean"],
+              "answer": 2
+            },
+            {
+              "question": "Which symbol is used to end statements?",
+              "options": [";", ":", ".", ","],
+              "answer": 0
+            },
+            {
+              "question": "Which operator is used for comparison?",
+              "options": ["=", "==", "+", "*"],
+              "answer": 1
+            },
+            {
+              "question": "Which keyword is used to create an object?",
+              "options": ["create", "new", "object", "make"],
+              "answer": 1
+            },
+            {
+              "question": "Which keyword prevents inheritance?",
+              "options": ["static", "abstract", "final", "private"],
+              "answer": 2
+            },
+            {
+              "question": "Java programs are compiled into?",
+              "options": ["Machine code", "Bytecode", "Assembly", "Binary"],
+              "answer": 1
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "title": "OOP in Java",
+          "time": 10,
+          "questions": [
+            {
+              "question": "How many main OOP principles are there?",
+              "options": ["2", "3", "4", "5"],
+              "answer": 2
+            },
+            {
+              "question": "Which concept hides internal implementation?",
+              "options": ["Inheritance", "Encapsulation", "Abstraction", "Polymorphism"],
+              "answer": 2
+            },
+            {
+              "question": "Which keyword is used for inheritance?",
+              "options": ["inherit", "super", "extends", "implements"],
+              "answer": 2
+            },
+            {
+              "question": "Polymorphism means?",
+              "options": ["One object many forms", "Many objects one form", "Data hiding", "Multiple classes"],
+              "answer": 0
+            },
+            {
+              "question": "Which keyword refers to parent class?",
+              "options": ["parent", "base", "super", "this"],
+              "answer": 2
+            },
+            {
+              "question": "Which keyword refers to current object?",
+              "options": ["this", "self", "current", "object"],
+              "answer": 0
+            },
+            {
+              "question": "Method overriding occurs when?",
+              "options": ["Two methods same name different class", "Two methods same class", "Same method same class", "Method not implemented"],
+              "answer": 0
+            },
+            {
+              "question": "Which access modifier is most restrictive?",
+              "options": ["public", "protected", "default", "private"],
+              "answer": 3
+            },
+            {
+              "question": "Constructor is used to?",
+              "options": ["Destroy object", "Initialize object", "Print object", "Delete object"],
+              "answer": 1
+            },
+            {
+              "question": "Interface supports?",
+              "options": ["Multiple inheritance", "Single inheritance", "No inheritance", "Constructor inheritance"],
+              "answer": 0
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "title": "Java Collections",
+          "time": 10,
+          "questions": [
+            {
+              "question": "Which interface is root of collections?",
+              "options": ["List", "Set", "Collection", "Map"],
+              "answer": 2
+            },
+            {
+              "question": "Which collection allows duplicates?",
+              "options": ["Set", "List", "Map", "TreeSet"],
+              "answer": 1
+            },
+            {
+              "question": "Which collection stores key-value pairs?",
+              "options": ["List", "Set", "Map", "Queue"],
+              "answer": 2
+            },
+            {
+              "question": "Which class implements List?",
+              "options": ["ArrayList", "HashSet", "HashMap", "TreeMap"],
+              "answer": 0
+            },
+            {
+              "question": "Which collection does NOT allow duplicates?",
+              "options": ["ArrayList", "LinkedList", "HashSet", "Vector"],
+              "answer": 2
+            },
+            {
+              "question": "Which class maintains insertion order?",
+              "options": ["HashSet", "TreeSet", "LinkedHashSet", "Set"],
+              "answer": 2
+            },
+            {
+              "question": "Which collection is synchronized?",
+              "options": ["ArrayList", "Vector", "HashSet", "HashMap"],
+              "answer": 1
+            },
+            {
+              "question": "Which method adds element to collection?",
+              "options": ["insert()", "add()", "push()", "put()"],
+              "answer": 1
+            },
+            {
+              "question": "Which class implements Queue?",
+              "options": ["PriorityQueue", "HashMap", "TreeSet", "ArrayList"],
+              "answer": 0
+            },
+            {
+              "question": "Which structure uses FIFO?",
+              "options": ["Stack", "Queue", "Tree", "Graph"],
+              "answer": 1
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "title": "Exception Handling",
+          "time": 10,
+          "questions": [
+            {
+              "question": "Which keyword handles exceptions?",
+              "options": ["handle", "catch", "error", "try"],
+              "answer": 1
+            },
+            {
+              "question": "Which block always executes?",
+              "options": ["try", "catch", "finally", "throw"],
+              "answer": 2
+            },
+            {
+              "question": "Which keyword is used to throw exception?",
+              "options": ["throw", "throws", "catch", "try"],
+              "answer": 0
+            },
+            {
+              "question": "Which keyword declares exception?",
+              "options": ["throw", "throws", "catch", "try"],
+              "answer": 1
+            },
+            {
+              "question": "ArithmeticException occurs when?",
+              "options": ["Divide by zero", "File missing", "Array overflow", "Memory full"],
+              "answer": 0
+            },
+            {
+              "question": "Which class is parent of exceptions?",
+              "options": ["Throwable", "Exception", "Error", "Runtime"],
+              "answer": 0
+            },
+            {
+              "question": "Checked exceptions are?",
+              "options": ["Compile time", "Runtime", "Logic errors", "Syntax errors"],
+              "answer": 0
+            },
+            {
+              "question": "Unchecked exceptions occur at?",
+              "options": ["Compile time", "Runtime", "Link time", "Load time"],
+              "answer": 1
+            },
+            {
+              "question": "Which exception occurs when array index invalid?",
+              "options": ["NullPointerException", "ArrayIndexOutOfBoundsException", "IOException", "ClassNotFoundException"],
+              "answer": 1
+            },
+            {
+              "question": "Custom exceptions are created by?",
+              "options": ["Extending Exception class", "Creating interface", "Using error keyword", "Using catch block"],
+              "answer": 0
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "title": "Multithreading",
+          "time": 10,
+          "questions": [
+            {
+              "question": "Multithreading means?",
+              "options": ["Multiple programs", "Multiple threads executing", "Multiple CPUs", "Multiple classes"],
+              "answer": 1
+            },
+            {
+              "question": "Which class is used for threads?",
+              "options": ["Thread", "Runnable", "Process", "Executor"],
+              "answer": 0
+            },
+            {
+              "question": "Which interface can create threads?",
+              "options": ["Runnable", "Callable", "Serializable", "Cloneable"],
+              "answer": 0
+            },
+            {
+              "question": "Which method starts thread?",
+              "options": ["run()", "execute()", "start()", "init()"],
+              "answer": 2
+            },
+            {
+              "question": "Which method pauses thread?",
+              "options": ["pause()", "sleep()", "wait()", "stop()"],
+              "answer": 1
+            },
+            {
+              "question": "Which method waits for another thread?",
+              "options": ["join()", "wait()", "sleep()", "yield()"],
+              "answer": 0
+            },
+            {
+              "question": "Which keyword ensures thread safety?",
+              "options": ["sync", "synchronized", "threadsafe", "volatile"],
+              "answer": 1
+            },
+            {
+              "question": "Thread lifecycle includes?",
+              "options": ["New", "Runnable", "Running", "All of these"],
+              "answer": 3
+            },
+            {
+              "question": "Which method stops thread temporarily?",
+              "options": ["yield()", "sleep()", "pause()", "break()"],
+              "answer": 1
+            },
+            {
+              "question": "Which thread has highest priority?",
+              "options": ["1", "5", "10", "100"],
+              "answer": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Linux",
+      "quizzes": [
+        {
+          "id": 6,
+          "title": "Linux Basics",
+          "time": 10,
+          "questions": [
+            {"question": "Linux is which type of OS?", "options": ["Open source", "Closed source", "Paid", "None"], "answer": 0},
+            {"question": "Which command shows current directory?", "options": ["pwd", "dir", "ls", "cd"], "answer": 0},
+            {"question": "Which command lists files?", "options": ["ls", "list", "show", "files"], "answer": 0},
+            {"question": "Which command changes directory?", "options": ["move", "cd", "dir", "goto"], "answer": 1},
+            {"question": "Linux kernel was created by?", "options": ["Bill Gates", "Linus Torvalds", "Steve Jobs", "Dennis Ritchie"], "answer": 1},
+            {"question": "Which command clears terminal?", "options": ["clear", "cls", "erase", "wipe"], "answer": 0},
+            {"question": "Which command creates file?", "options": ["touch", "make", "create", "new"], "answer": 0},
+            {"question": "Which command deletes file?", "options": ["rm", "delete", "remove", "erase"], "answer": 0},
+            {"question": "Which command shows manual page?", "options": ["man", "help", "info", "guide"], "answer": 0},
+            {"question": "Linux terminal is also called?", "options": ["Shell", "Console", "Interpreter", "Compiler"], "answer": 0}
+          ]
+        },
+        {
+          "id": 7,
+          "title": "Linux File System",
+          "time": 10,
+          "questions": [
+            {"question": "Root directory is represented by?", "options": ["/", "root", "home", "dir"], "answer": 0},
+            {"question": "Home directory symbol?", "options": ["~", "/", "$", "#"], "answer": 0},
+            {"question": "Which command creates directory?", "options": ["mkdir", "makedir", "create", "newdir"], "answer": 0},
+            {"question": "Which command removes directory?", "options": ["rmdir", "delete", "remove", "deldir"], "answer": 0},
+            {"question": "Which directory contains user files?", "options": ["/home", "/root", "/etc", "/usr"], "answer": 0},
+            {"question": "Configuration files stored in?", "options": ["/etc", "/bin", "/home", "/var"], "answer": 0},
+            {"question": "Temporary files stored in?", "options": ["/tmp", "/bin", "/lib", "/etc"], "answer": 0},
+            {"question": "Binary files located in?", "options": ["/bin", "/etc", "/tmp", "/root"], "answer": 0},
+            {"question": "Which command copies files?", "options": ["cp", "copy", "clone", "mv"], "answer": 0},
+            {"question": "Which command moves files?", "options": ["mv", "move", "shift", "transfer"], "answer": 0}
+          ]
+        },
+        {
+          "id": 8,
+          "title": "Shell Commands",
+          "time": 10,
+          "questions": [
+            {"question": "Which command shows running processes?", "options": ["ps", "proc", "top", "run"], "answer": 0},
+            {"question": "Which command displays disk usage?", "options": ["df", "disk", "du", "space"], "answer": 0},
+            {"question": "Which command shows file content?", "options": ["cat", "show", "read", "view"], "answer": 0},
+            {"question": "Which command prints first lines of file?", "options": ["head", "top", "start", "cat"], "answer": 0},
+            {"question": "Which command prints last lines of file?", "options": ["tail", "end", "finish", "bottom"], "answer": 0},
+            {"question": "Which command searches text?", "options": ["grep", "find", "search", "locate"], "answer": 0},
+            {"question": "Which command downloads files?", "options": ["wget", "download", "curl", "fetch"], "answer": 0},
+            {"question": "Which command shows system uptime?", "options": ["uptime", "time", "clock", "sys"], "answer": 0},
+            {"question": "Which command prints working users?", "options": ["who", "users", "id", "me"], "answer": 0},
+            {"question": "Which command shows system info?", "options": ["uname", "info", "sys", "about"], "answer": 0}
+          ]
+        },
+        {
+          "id": 9,
+          "title": "Process Management",
+          "time": 10,
+          "questions": [
+            {"question": "Which command shows active processes?", "options": ["top", "run", "proc", "task"], "answer": 0},
+            {"question": "Which command kills process?", "options": ["kill", "stop", "end", "terminate"], "answer": 0},
+            {"question": "Which signal terminates process?", "options": ["SIGKILL", "SIGSTOP", "SIGINT", "SIGTERM"], "answer": 0},
+            {"question": "Process ID is called?", "options": ["PID", "ID", "PRC", "NUM"], "answer": 0},
+            {"question": "Which command runs program in background?", "options": ["&", "bg", "run", "back"], "answer": 0},
+            {"question": "Foreground process command?", "options": ["fg", "front", "focus", "top"], "answer": 0},
+            {"question": "Which command lists background jobs?", "options": ["jobs", "bglist", "process", "task"], "answer": 0},
+            {"question": "Zombie process means?", "options": ["Dead but listed", "Running", "Sleeping", "Killed"], "answer": 0},
+            {"question": "Which command changes priority?", "options": ["nice", "renice", "priority", "set"], "answer": 1},
+            {"question": "Which command monitors processes?", "options": ["top", "proc", "watch", "monitor"], "answer": 0}
+          ]
+        },
+        {
+          "id": 10,
+          "title": "Permissions & Users",
+          "time": 10,
+          "questions": [
+            {"question": "Which command changes file permission?", "options": ["chmod", "chown", "perm", "access"], "answer": 0},
+            {"question": "Which command changes file owner?", "options": ["chown", "chmod", "owner", "user"], "answer": 0},
+            {"question": "Permission 777 means?", "options": ["Full access", "Read only", "Write only", "Execute only"], "answer": 0},
+            {"question": "Permission 755 means?", "options": ["Owner full", "None", "Read only", "Execute only"], "answer": 0},
+            {"question": "Which command adds user?", "options": ["useradd", "adduser", "createuser", "newuser"], "answer": 0},
+            {"question": "Which command deletes user?", "options": ["userdel", "deluser", "removeuser", "rmuser"], "answer": 0},
+            {"question": "Which file stores passwords?", "options": ["/etc/passwd", "/etc/shadow", "/etc/users", "/etc/login"], "answer": 1},
+            {"question": "Which command switches user?", "options": ["su", "switch", "login", "user"], "answer": 0},
+            {"question": "Root user ID is?", "options": ["0", "1", "100", "999"], "answer": 0},
+            {"question": "Which command grants admin rights?", "options": ["sudo", "root", "admin", "super"], "answer": 0}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "IoT",
+      "quizzes": [
+        {
+          "id": 11,
+          "title": "IoT Basics",
+          "time": 10,
+          "questions": [
+            {"question": "IoT stands for?", "options": ["Internet of Things", "Internet of Technology", "Input of Things", "Integration of Things"], "answer": 0},
+            {"question": "IoT connects devices through?", "options": ["Internet", "USB", "Bluetooth only", "Cable"], "answer": 0},
+            {"question": "Example of IoT device?", "options": ["Smart thermostat", "Laptop", "Keyboard", "Monitor"], "answer": 0},
+            {"question": "IoT mainly used for?", "options": ["Automation", "Gaming", "Typing", "Editing"], "answer": 0},
+            {"question": "Which protocol used in IoT?", "options": ["MQTT", "HTTP", "FTP", "All"], "answer": 3},
+            {"question": "IoT devices collect?", "options": ["Data", "Images", "Videos", "Files"], "answer": 0},
+            {"question": "Which technology helps IoT communication?", "options": ["WiFi", "Bluetooth", "Zigbee", "All"], "answer": 3},
+            {"question": "IoT devices include?", "options": ["Sensors", "Actuators", "Controllers", "All"], "answer": 3},
+            {"question": "IoT helps create?", "options": ["Smart homes", "Smart cities", "Smart cars", "All"], "answer": 3},
+            {"question": "IoT requires?", "options": ["Network", "Power", "Sensors", "All"], "answer": 3}
+          ]
+        },
+        {
+          "id": 12,
+          "title": "Sensors & Actuators",
+          "time": 10,
+          "questions": [
+            {"question": "Sensor measures?", "options": ["Environment", "Power", "Voltage", "Code"], "answer": 0},
+            {"question": "Temperature sensor measures?", "options": ["Heat", "Light", "Sound", "Motion"], "answer": 0},
+            {"question": "Motion sensor detects?", "options": ["Movement", "Heat", "Sound", "Light"], "answer": 0},
+            {"question": "Actuator does?", "options": ["Action", "Measure", "Store", "Compute"], "answer": 0},
+            {"question": "Example actuator?", "options": ["Motor", "Thermometer", "Camera", "Sensor"], "answer": 0},
+            {"question": "LDR sensor detects?", "options": ["Light", "Temperature", "Motion", "Pressure"], "answer": 0},
+            {"question": "Ultrasonic sensor measures?", "options": ["Distance", "Light", "Heat", "Voltage"], "answer": 0},
+            {"question": "Humidity sensor measures?", "options": ["Moisture", "Heat", "Light", "Pressure"], "answer": 0},
+            {"question": "Sensors send data to?", "options": ["Microcontroller", "Battery", "Wire", "Switch"], "answer": 0},
+            {"question": "Actuators receive commands from?", "options": ["Controller", "Sensor", "Battery", "Network"], "answer": 0}
+          ]
+        },
+        {
+          "id": 13,
+          "title": "IoT Architecture",
+          "time": 10,
+          "questions": [
+            {"question": "How many layers in IoT architecture?", "options": ["3", "4", "5", "6"], "answer": 0},
+            {"question": "First layer in IoT?", "options": ["Perception", "Application", "Network", "Cloud"], "answer": 0},
+            {"question": "Network layer handles?", "options": ["Communication", "Data", "Sensors", "Apps"], "answer": 0},
+            {"question": "Application layer provides?", "options": ["Services", "Network", "Sensors", "Data"], "answer": 0},
+            {"question": "IoT data stored in?", "options": ["Cloud", "Router", "Switch", "Cable"], "answer": 0},
+            {"question": "Cloud computing helps?", "options": ["Data storage", "Networking", "Power", "Devices"], "answer": 0},
+            {"question": "IoT gateway connects?", "options": ["Devices to internet", "Users", "Sensors", "Apps"], "answer": 0},
+            {"question": "Which layer processes data?", "options": ["Middleware", "Sensor", "Device", "Hardware"], "answer": 0},
+            {"question": "IoT communication uses?", "options": ["Protocols", "Sensors", "Hardware", "Memory"], "answer": 0},
+            {"question": "IoT systems rely on?", "options": ["Connectivity", "Electricity", "Storage", "All"], "answer": 3}
+          ]
+        },
+        {
+          "id": 14,
+          "title": "ESP32 Fundamentals",
+          "time": 10,
+          "questions": [
+            {"question": "ESP32 is?", "options": ["Microcontroller", "Sensor", "OS", "Language"], "answer": 0},
+            {"question": "ESP32 supports?", "options": ["WiFi", "Bluetooth", "Both", "None"], "answer": 2},
+            {"question": "ESP32 programmed using?", "options": ["Arduino IDE", "Notepad", "Excel", "Word"], "answer": 0},
+            {"question": "ESP32 GPIO used for?", "options": ["Input/Output", "Memory", "Storage", "Power"], "answer": 0},
+            {"question": "ESP32 voltage level?", "options": ["3.3V", "5V", "12V", "1V"], "answer": 0},
+            {"question": "ESP32 commonly used in?", "options": ["IoT", "Gaming", "Office", "Design"], "answer": 0},
+            {"question": "ESP32 has built-in?", "options": ["WiFi", "Bluetooth", "Both", "None"], "answer": 2},
+            {"question": "ESP32 uses which chip?", "options": ["Xtensa", "Intel", "ARM", "AMD"], "answer": 0},
+            {"question": "ESP32 flash memory approx?", "options": ["4MB", "1MB", "16MB", "512KB"], "answer": 0},
+            {"question": "ESP32 replaces?", "options": ["ESP8266", "Arduino", "Raspberry Pi", "None"], "answer": 0}
+          ]
+        },
+        {
+          "id": 15,
+          "title": "IoT Security",
+          "time": 10,
+          "questions": [
+            {"question": "IoT security protects?", "options": ["Devices", "Network", "Data", "All"], "answer": 3},
+            {"question": "Encryption protects?", "options": ["Data", "Hardware", "Power", "Sensors"], "answer": 0},
+            {"question": "Strong passwords prevent?", "options": ["Unauthorized access", "Errors", "Bugs", "Crashes"], "answer": 0},
+            {"question": "Firewall protects?", "options": ["Network", "Device", "Data", "Sensors"], "answer": 0},
+            {"question": "Authentication verifies?", "options": ["Identity", "Data", "Speed", "Connection"], "answer": 0},
+            {"question": "HTTPS provides?", "options": ["Secure communication", "Speed", "Memory", "Storage"], "answer": 0},
+            {"question": "IoT attacks include?", "options": ["Botnets", "Malware", "DDoS", "All"], "answer": 3},
+            {"question": "Firmware updates improve?", "options": ["Security", "Speed", "Display", "Storage"], "answer": 0},
+            {"question": "Secure IoT requires?", "options": ["Encryption", "Authentication", "Updates", "All"], "answer": 3},
+            {"question": "Device isolation prevents?", "options": ["Network attacks", "Speed issues", "Hardware failure", "Power loss"], "answer": 0}
+          ]
+        }
+      ]
+    }
+  ]
+}

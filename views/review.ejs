@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= quiz.title %> - Review | QuizSphere</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/review.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+<%- include('partials/header') %>
+
+<main class="review-main">
+    <div class="review-container">
+
+        <!-- Header -->
+        <div class="review-header">
+            <h1 class="review-title">
+                <i class="fas fa-clipboard-check"></i> Review Answers - <span class="title-highlight"><%= quiz.title %></span>
+            </h1>
+            <a href="/result/<%= quiz.id %>?answers=<%= answers ? answers.join(',') : '' %>" class="back-to-result">
+                <i class="fas fa-arrow-left"></i> Back to Result
+            </a>
+        </div>
+
+        <%
+        // Calculate stats
+        let correct = 0;
+        let wrong = 0;
+        let unattempted = 0;
+        
+        if (answers && quiz.questions) {
+            quiz.questions.forEach((q, i) => {
+                // Check if answer exists and is not null/undefined/-1
+                if (answers[i] === null || answers[i] === undefined || answers[i] === -1 || answers[i] === '') {
+                    unattempted++;
+                } else if (answers[i] == q.answer) {
+                    correct++;
+                } else {
+                    wrong++;
+                }
+            });
+        }
+        
+        let total = quiz.questions.length;
+        %>
+
+        <!-- Summary Cards -->
+        <div class="review-summary">
+            <div class="summary-card total">
+                <div class="summary-icon">
+                    <i class="fas fa-list-ol"></i>
+                </div>
+                <div class="summary-content">
+                    <span class="summary-label">Total Questions</span>
+                    <span class="summary-value"><%= total %></span>
+                </div>
+            </div>
+
+            <div class="summary-card correct">
+                <div class="summary-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="summary-content">
+                    <span class="summary-label">Correct</span>
+                    <span class="summary-value"><%= correct %></span>
+                </div>
+            </div>
+
+            <div class="summary-card wrong">
+                <div class="summary-icon">
+                    <i class="fas fa-times-circle"></i>
+                </div>
+                <div class="summary-content">
+                    <span class="summary-label">Wrong</span>
+                    <span class="summary-value"><%= wrong %></span>
+                </div>
+            </div>
+
+            <div class="summary-card unattempted">
+                <div class="summary-icon">
+                    <i class="fas fa-question-circle"></i>
+                </div>
+                <div class="summary-content">
+                    <span class="summary-label">Unattempted</span>
+                    <span class="summary-value"><%= unattempted %></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Questions Review Grid -->
+        <div class="questions-review-grid">
+            <% if (quiz.questions && quiz.questions.length > 0) { %>
+                <% quiz.questions.forEach((q, i) => { 
+                    // Check if question was attempted
+                    const isAttempted = answers[i] !== null && answers[i] !== undefined && answers[i] !== -1 && answers[i] !== '';
+                    const isCorrect = isAttempted && answers[i] == q.answer;
+                %>
+                    <div class="review-card">
+                        <div class="question-header">
+                            <span class="question-number">Q<%= i + 1 %></span>
+                            <% if (!isAttempted) { %>
+                                <span class="status-badge unattempted">Unattempted</span>
+                            <% } else if (isCorrect) { %>
+                                <span class="status-badge correct">Correct</span>
+                            <% } else { %>
+                                <span class="status-badge wrong">Wrong</span>
+                            <% } %>
+                        </div>
+                        
+                        <div class="question-text">
+                            <%= q.question %>
+                        </div>
+
+                        <div class="options-container">
+                            <% if (q.options && q.options.length > 0) { %>
+                                <% q.options.forEach((opt, optIndex) => { 
+                                    let optionClass = '';
+                                    let statusIcon = '';
+                                    
+                                    // Check if this option is the correct answer
+                                    if (optIndex == q.answer) {
+                                        optionClass = 'correct-option';
+                                        statusIcon = '<i class="fas fa-check-circle"></i>';
+                                    }
+                                    
+                                    // Check if this option was selected by user and it's wrong
+                                    if (isAttempted && answers[i] == optIndex && optIndex != q.answer) {
+                                        optionClass = 'wrong-option';
+                                        statusIcon = '<i class="fas fa-times-circle"></i>';
+                                    }
+                                %>
+                                    <div class="option <%= optionClass %>">
+                                        <span class="option-marker"><%= String.fromCharCode(65 + optIndex) %></span>
+                                        <span class="option-text"><%= opt %></span>
+                                        <% if (optionClass) { %>
+                                            <span class="option-status"><%- statusIcon %></span>
+                                        <% } %>
+                                    </div>
+                                <% }) %>
+                            <% } %>
+                        </div>
+
+                        <div class="answer-feedback">
+                            <div class="user-answer">
+                                <span class="feedback-label">Your Answer:</span>
+                                <span class="feedback-value <%= isCorrect ? 'correct' : (isAttempted ? 'wrong' : '') %>">
+                                    <% if (isAttempted) { %>
+                                        <%= String.fromCharCode(65 + parseInt(answers[i])) %> - <%= q.options[answers[i]] %>
+                                    <% } else { %>
+                                        Not Attempted
+                                    <% } %>
+                                </span>
+                            </div>
+                            <div class="correct-answer">
+                                <span class="feedback-label">Correct Answer:</span>
+                                <span class="feedback-value correct">
+                                    <%= String.fromCharCode(65 + q.answer) %> - <%= q.options[q.answer] %>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>
+            <% } %>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="review-actions">
+            <a href="/result/<%= quiz.id %>?answers=<%= answers ? answers.join(',') : '' %>" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Back to Result
+            </a>
+            <a href="/quiz" class="btn btn-primary">
+                <i class="fas fa-list"></i> Back to Quizzes
+            </a>
+        </div>
+
+    </div>
+</main>
+
+<%- include('partials/footer') %>
+
+</body>
+</html>

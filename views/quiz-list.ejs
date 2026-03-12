@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>QuizSphere - Available Quizzes</title>
+
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/header.css">
+<link rel="stylesheet" href="/css/footer.css">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<%- include('partials/header') %>
+
+<main class="quiz-list-main">
+
+<!-- Page Title -->
+<section class="page-title-section">
+<h1 class="page-title">Available Quizzes</h1>
+<p class="page-subtitle">Test your knowledge across different subjects</p>
+</section>
+
+
+<!-- SUBJECT CAROUSELS -->
+
+<section class="quiz-carousel-section">
+
+<% if (subjects && subjects.length > 0) { %>
+
+<% subjects.forEach(subject => { %>
+
+<div class="subject-carousel" data-subject="<%= subject.name.toLowerCase() %>">
+
+<!-- SUBJECT HEADER -->
+
+<div class="subject-header">
+
+<h2 class="subject-heading">
+
+<% if (subject.name === 'Java') { %>
+<i class="fas fa-coffee subject-icon"></i>
+<% } else if (subject.name === 'Linux') { %>
+<i class="fab fa-linux subject-icon"></i>
+<% } else if (subject.name === 'IoT') { %>
+<i class="fas fa-microchip subject-icon"></i>
+<% } %>
+
+<%= subject.name %>
+
+</h2>
+
+
+<div class="carousel-controls">
+
+<button class="carousel-btn prev-btn">
+<i class="fas fa-chevron-left"></i>
+</button>
+
+<button class="carousel-btn next-btn">
+<i class="fas fa-chevron-right"></i>
+</button>
+
+</div>
+
+</div>
+
+
+<!-- QUIZ CARDS -->
+
+<div class="carousel-container">
+
+<div class="quizzes-carousel">
+
+<% subject.quizzes.forEach(quiz => { %>
+
+<div class="quiz-card">
+
+<div class="card-content">
+
+<h3 class="quiz-title"><%= quiz.title %></h3>
+
+
+<div class="quiz-meta">
+
+<!-- QUESTION COUNT -->
+
+<div class="meta-item">
+<i class="fas fa-question-circle meta-icon"></i>
+<span><%= quiz.questions ? quiz.questions.length : 0 %> questions</span>
+</div>
+
+
+<!-- TIME -->
+
+<div class="meta-item">
+<i class="fas fa-clock meta-icon"></i>
+<span><%= quiz.time %> min</span>
+</div>
+
+
+<!-- DIFFICULTY -->
+
+<div class="meta-item difficulty <%= quiz.difficulty ? quiz.difficulty.toLowerCase() : 'easy' %>">
+<i class="fas fa-signal meta-icon"></i>
+<span><%= quiz.difficulty || 'Easy' %></span>
+</div>
+
+</div>
+
+
+<a href="/quiz/<%= quiz.id %>" class="attempt-btn">
+
+Attempt Quiz
+<i class="fas fa-arrow-right"></i>
+
+</a>
+
+</div>
+
+</div>
+
+<% }) %>
+
+</div>
+
+</div>
+
+</div>
+
+<% }) %>
+
+<% } else { %>
+
+<div class="no-quizzes-message">
+<i class="fas fa-book-open"></i>
+<p>No quizzes available at the moment. Please check back later.</p>
+</div>
+
+<% } %>
+
+</section>
+
+</main>
+
+
+<%- include('partials/footer') %>
+
+
+<script src="/js/carousel.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %> | QuizSphere</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/auth.css">
+</head>
+<body>
+    <!-- Simple Quiz Background -->
+    <div class="quiz-bg" style="background: #7BA7F2; opacity: 0.15;"></div>
+    
+    <div class="auth-wrapper">
+        <div class="auth-card">
+            <!-- Compact Header -->
+            <div class="auth-header">
+                <div class="auth-icon">
+                    <i class="fas fa-graduation-cap" style="color: #7BA7F2; font-size: 40px;"></i>
+                </div>
+                <h1 class="auth-title" style="color: #2C3E50;">Welcome Back</h1>
+                <p class="auth-subtitle" style="color: #7BA7F2;">Login to continue your quiz</p>
+            </div>
+
+            <!-- Error/Success Message -->
+            <% if (locals.error) { %>
+                <div class="error-message">
+                    <span class="error-icon">!</span>
+                    <span><%= error %></span>
+                </div>
+            <% } %>
+
+            <% if (locals.success) { %>
+                <div class="success-message">
+                    <span class="success-icon">✓</span>
+                    <span><%= success %></span>
+                </div>
+            <% } %>
+
+            <!-- Compact Form -->
+            <form action="/login" method="POST" class="auth-form">
+                <div class="form-group">
+                    <label for="identifier" class="form-label" style="color: #2C3E50;">
+                        <i class="fas fa-user" style="color: #7BA7F2;"></i> Email or Roll No.
+                    </label>
+                    <input 
+                        type="text" 
+                        id="identifier" 
+                        name="identifier" 
+                        class="form-input"
+                        value="<%= locals.formData && formData.identifier ? formData.identifier : '' %>"
+                        placeholder="email@university.edu or 2024CS001"
+                        required
+                        style="border-color: #e2e8f0;"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="form-label" style="color: #2C3E50;">
+                        <i class="fas fa-lock" style="color: #7BA7F2;"></i> Password
+                    </label>
+                    <div class="password-field">
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            class="form-input password-input"
+                            placeholder="Enter your password"
+                            required
+                            style="border-color: #e2e8f0;"
+                        >
+                        <button 
+                            type="button" 
+                            class="password-toggle" 
+                            onclick="togglePassword('password', this)"
+                            aria-label="Toggle password visibility"
+                        >
+                            <i class="far fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Simple Options Row -->
+                <div class="options-row">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="remember" style="accent-color: #7BA7F2;"> Remember me
+                    </label>
+                    <a href="#" class="forgot-link" style="color: #7BA7F2;">Forgot password?</a>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary btn-block" style="background: #7BA7F2;">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </button>
+            </form>
+
+            <!-- Footer -->
+            <div class="auth-footer">
+                <p style="color: #5a6e84;">New to QuizSphere? <a href="/signup" style="color: #7BA7F2; font-weight: 600;">Create account</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function togglePassword(fieldId, btn) {
+            const input = document.getElementById(fieldId);
+            const icon = btn.querySelector('i');
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= quiz.title %> - Result | QuizSphere</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/result.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+<%- include('partials/header') %>
+
+<main class="result-main">
+    <div class="result-container">
+
+        <!-- Quiz Title -->
+        <h1 class="result-title">
+            <span class="title-highlight"><%= quiz.title %></span> - Result
+        </h1>
+
+        <%
+        // Calculate stats - FIXED: Handle 0 as valid answer
+        let correct = 0;
+        let wrong = 0;
+        let unattempted = 0;
+        
+        if (answers && quiz.questions) {
+            quiz.questions.forEach((q, i) => {
+                // Check if answer exists and is not null/undefined/-1
+                const isAttempted = answers[i] !== null && answers[i] !== undefined && answers[i] !== -1 && answers[i] !== '';
+                
+                if (!isAttempted) {
+                    unattempted++;
+                } else if (answers[i] == q.answer) {
+                    correct++;
+                } else {
+                    wrong++;
+                }
+            });
+        }
+        
+        let total = quiz.questions.length;
+        let score = correct;
+        let percentage = Math.round((score / total) * 100) || 0;
+        
+        // Determine message based on percentage
+        let message = '';
+        let messageClass = '';
+        if (percentage >= 80) {
+            message = 'Excellent!';
+            messageClass = 'excellent';
+        } else if (percentage >= 60) {
+            message = 'Good Job!';
+            messageClass = 'good';
+        } else if (percentage >= 40) {
+            message = 'Keep Practicing';
+            messageClass = 'average';
+        } else {
+            message = 'Needs Improvement';
+            messageClass = 'poor';
+        }
+        %>
+
+        <!-- Score Cards Row -->
+        <div class="score-cards">
+            <div class="score-card score-primary">
+                <div class="card-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="card-content">
+                    <h3>Score</h3>
+                    <div class="card-value"><%= score %>/<%= total %></div>
+                </div>
+            </div>
+
+            <div class="score-card score-secondary">
+                <div class="card-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="card-content">
+                    <h3>Percentage</h3>
+                    <div class="card-value"><%= percentage %>%</div>
+                </div>
+            </div>
+
+            <div class="score-card score-<%= messageClass %>">
+                <div class="card-icon">
+                    <i class="fas fa-medal"></i>
+                </div>
+                <div class="card-content">
+                    <h3>Status</h3>
+                    <div class="card-value"><%= message %></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Extra Stats Row -->
+        <div class="extra-stats">
+            <div class="stat-item">
+                <div class="stat-icon correct">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="stat-details">
+                    <span class="stat-label">Correct Answers</span>
+                    <span class="stat-number correct"><%= correct %></span>
+                </div>
+            </div>
+
+            <div class="stat-item">
+                <div class="stat-icon wrong">
+                    <i class="fas fa-times-circle"></i>
+                </div>
+                <div class="stat-details">
+                    <span class="stat-label">Wrong Answers</span>
+                    <span class="stat-number wrong"><%= wrong %></span>
+                </div>
+            </div>
+
+            <div class="stat-item">
+                <div class="stat-icon accuracy">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                <div class="stat-details">
+                    <span class="stat-label">Accuracy</span>
+                    <span class="stat-number accuracy"><%= percentage %>%</span>
+                </div>
+            </div>
+
+            <div class="stat-item">
+                <div class="stat-icon unattempted">
+                    <i class="fas fa-question-circle"></i>
+                </div>
+                <div class="stat-details">
+                    <span class="stat-label">Unattempted</span>
+                    <span class="stat-number unattempted"><%= unattempted %></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Performance Circle and Breakdown -->
+        <div class="performance-section">
+            <!-- Circular Progress -->
+            <div class="circle-container">
+                <h3><i class="fas fa-chart-pie"></i> Overall Performance</h3>
+                <div class="progress-circle">
+                    <div class="circle" style="background: conic-gradient(#7BA7F2 0deg <%= percentage * 3.6 %>deg, #e0e8f0 <%= percentage * 3.6 %>deg 360deg);">
+                        <div class="inner-circle">
+                            <span class="percentage"><%= percentage %>%</span>
+                            <span class="percentage-label">Score</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="circle-footer"><%= total %> Total Questions</p>
+            </div>
+
+            <!-- Breakdown Bars -->
+            <div class="breakdown-container">
+                <h3><i class="fas fa-chart-bar"></i> Performance Breakdown</h3>
+                
+                <div class="breakdown-item">
+                    <div class="breakdown-label">
+                        <span><i class="fas fa-check-circle correct"></i> Correct</span>
+                        <span><%= correct %></span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill correct-bg" style="width: <%= (correct/total)*100 %>%"></div>
+                    </div>
+                </div>
+
+                <div class="breakdown-item">
+                    <div class="breakdown-label">
+                        <span><i class="fas fa-times-circle wrong"></i> Wrong</span>
+                        <span><%= wrong %></span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill wrong-bg" style="width: <%= (wrong/total)*100 %>%"></div>
+                    </div>
+                </div>
+
+                <div class="breakdown-item">
+                    <div class="breakdown-label">
+                        <span><i class="fas fa-question-circle unattempted"></i> Unattempted</span>
+                        <span><%= unattempted %></span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill unattempted-bg" style="width: <%= (unattempted/total)*100 %>%"></div>
+                    </div>
+                </div>
+
+                <div class="accuracy-meter">
+                    <div class="accuracy-label">
+                        <span><i class="fas fa-bullseye"></i> Accuracy</span>
+                        <span class="accuracy-value"><%= percentage %>%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- What To Do Next Section -->
+        <div class="next-actions">
+            <h2><i class="fas fa-arrow-circle-right"></i> What To Do Next?</h2>
+            
+            <div class="action-cards">
+                <a href="/review/<%= quiz.id %>?answers=<%= answers ? answers.join(',') : '' %>" class="action-card">
+                    <div class="action-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Review Answers</h3>
+                    <p>See which questions you got right and wrong</p>
+                    <span class="action-link">Review <i class="fas fa-arrow-right"></i></span>
+                </a>
+
+                <a href="/quiz/<%= quiz.id %>/attempt" class="action-card">
+                    <div class="action-icon">
+                        <i class="fas fa-redo-alt"></i>
+                    </div>
+                    <h3>Retake Quiz</h3>
+                    <p>Try again to improve your score</p>
+                    <span class="action-link">Retake <i class="fas fa-arrow-right"></i></span>
+                </a>
+
+                <a href="/quiz" class="action-card">
+                    <div class="action-icon">
+                        <i class="fas fa-list"></i>
+                    </div>
+                    <h3>Back to Quizzes</h3>
+                    <p>Explore other quizzes and subjects</p>
+                    <span class="action-link">Browse <i class="fas fa-arrow-right"></i></span>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<%- include('partials/footer') %>
+
+</body>
+</html>

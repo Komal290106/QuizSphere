@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Profile | QuizSphere</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/profile.css">
+</head>
+<body>
+    <!-- Use the regular header which already has conditional user display -->
+    <%- include('partials/header') %>
+
+    <main class="profile-main">
+        <div class="profile-container">
+
+            <!-- Profile Header -->
+            <div class="profile-header">
+                <div class="profile-cover">
+                    <div class="profile-avatar">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h1 class="profile-name"><%= user.name %></h1>
+                    <p class="profile-role">Student</p>
+                </div>
+            </div>
+
+            <!-- Profile Content -->
+            <div class="profile-content">
+
+                <!-- Profile Info Card -->
+                <div class="profile-card">
+                    <h2 class="card-title">
+                        <i class="fas fa-info-circle"></i>
+                        Personal Information
+                    </h2>
+
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">Full Name</span>
+                            <span class="info-value"><%= user.name %></span>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="info-label">Email Address</span>
+                            <span class="info-value"><%= user.email %></span>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="info-label">Roll Number</span>
+                            <span class="info-value"><%= user.rollNumber %></span>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="info-label">Role</span>
+                            <span class="info-value role-badge">Student</span>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="info-label">Member Since</span>
+                            <span class="info-value">January 2024</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Account Stats Card (Hardcoded for now) -->
+                <div class="profile-card">
+                    <h2 class="card-title">
+                        <i class="fas fa-chart-bar"></i>
+                        Account Statistics
+                    </h2>
+
+                    <div class="stats-grid">
+                        <div class="stat-box">
+                            <div class="stat-number">12</div>
+                            <div class="stat-label">Quizzes Taken</div>
+                        </div>
+
+                        <div class="stat-box">
+                            <div class="stat-number">78%</div>
+                            <div class="stat-label">Average Score</div>
+                        </div>
+
+                        <div class="stat-box">
+                            <div class="stat-number">95%</div>
+                            <div class="stat-label">Best Score</div>
+                        </div>
+
+                        <div class="stat-box">
+                            <div class="stat-number">5</div>
+                            <div class="stat-label">Certificates</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="profile-actions">
+                    <a href="/dashboard" class="btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Back to Dashboard
+                    </a>
+                    <a href="/logout" class="btn-logout">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <%- include('partials/footer') %>
+</body>
+</html>

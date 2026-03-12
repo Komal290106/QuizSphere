@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard | QuizSphere</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+
+    <%- include('partials/header') %>
+    
+    <main class="dashboard-main">
+        <div class="dashboard-container">
+            <!-- WELCOME SECTION with User Name -->
+            <div class="welcome-section">
+                <h1>Welcome, <span class="user-highlight"><%= user ? user.name.split(' ')[0] : 'Guest' %></span>!</h1>
+                <h2>Ready to test your knowledge today?</h2>
+
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <i class="fas fa-clipboard-list stat-icon"></i>
+                        <div class="stat-content">
+                            <h3>Total Quizzes</h3>
+                            <p>15</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-chart-line stat-icon"></i>
+                        <div class="stat-content">
+                            <h3>Average Score</h3>
+                            <p>78%</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-trophy stat-icon"></i>
+                        <div class="stat-content">
+                            <h3>Best Score</h3>
+                            <p>92%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FILTER SECTION -->
+            <!-- <div class="filter-section">
+                <div class="search-wrapper">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" placeholder="Search quizzes..." class="search-input">
+                </div>
+
+                <select class="category-filter">
+                    <option>All Categories</option>
+                    <option>Java</option>
+                    <option>Linux</option>
+                    <option>IoT</option>
+                </select>
+
+                <select class="difficulty-filter">
+                    <option>All Difficulties</option>
+                    <option>Easy</option>
+                    <option>Medium</option>
+                    <option>Hard</option>
+                </select>
+
+                <button class="filter-btn">
+                    <i class="fas fa-sliders-h"></i> Filter
+                </button>
+            </div> -->
+
+            <!-- AVAILABLE QUIZZES SECTION - Matches quiz-details styling -->
+            <div class="quizzes-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-book-open"></i> Available Quizzes</h2>
+                    <a href="/quiz" class="view-all-link">View All <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="quiz-grid">
+                    <!-- Java Quizzes -->
+                    <div class="quiz-card" data-subject="Java">
+                        <div class="quiz-card-header">
+                            <span class="subject-icon-wrapper">
+                                <i class="fas fa-coffee subject-icon"></i>
+                                <span class="subject-name">Java</span>
+                            </span>
+                            <span class="difficulty-badge easy">Easy</span>
+                        </div>
+                        <h3 class="quiz-title">Java Basics</h3>
+                        <div class="quiz-meta">
+                            <span class="meta-item">
+                                <i class="fas fa-question-circle meta-icon"></i>
+                                <span>10 questions</span>
+                            </span>
+                            <span class="meta-item">
+                                <i class="fas fa-clock meta-icon"></i>
+                                <span>10 min</span>
+                            </span>
+                        </div>
+                        <div class="quiz-card-footer">
+                            <a href="/quiz/1/attempt" class="attempt-btn">
+                                Start Quiz <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <a href="/quiz/1" class="details-btn">
+                                <i class="fas fa-info-circle"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card" data-subject="Java">
+                        <div class="quiz-card-header">
+                            <span class="subject-icon-wrapper">
+                                <i class="fas fa-coffee subject-icon"></i>
+                                <span class="subject-name">Java</span>
+                            </span>
+                            <span class="difficulty-badge medium">Medium</span>
+                        </div>
+                        <h3 class="quiz-title">OOP in Java</h3>
+                        <div class="quiz-meta">
+                            <span class="meta-item">
+                                <i class="fas fa-question-circle meta-icon"></i>
+                                <span>10 questions</span>
+                            </span>
+                            <span class="meta-item">
+                                <i class="fas fa-clock meta-icon"></i>
+                                <span>10 min</span>
+                            </span>
+                        </div>
+                        <div class="quiz-card-footer">
+                            <a href="/quiz/2/attempt" class="attempt-btn">
+                                Start Quiz <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <a href="/quiz/2" class="details-btn">
+                                <i class="fas fa-info-circle"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card" data-subject="Java">
+                        <div class="quiz-card-header">
+                            <span class="subject-icon-wrapper">
+                                <i class="fas fa-coffee subject-icon"></i>
+                                <span class="subject-name">Java</span>
+                            </span>
+                            <span class="difficulty-badge hard">Hard</span>
+                        </div>
+                        <h3 class="quiz-title">Java Collections</h3>
+                        <div class="quiz-meta">
+                            <span class="meta-item">
+                                <i class="fas fa-question-circle meta-icon"></i>
+                                <span>10 questions</span>
+                            </span>
+                            <span class="meta-item">
+                                <i class="fas fa-clock meta-icon"></i>
+                                <span>10 min</span>
+                            </span>
+                        </div>
+                        <div class="quiz-card-footer">
+                            <a href="/quiz/3/attempt" class="attempt-btn">
+                                Start Quiz <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <a href="/quiz/3" class="details-btn">
+                                <i class="fas fa-info-circle"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Linux Quizzes -->
+                    <div class="quiz-card" data-subject="Linux">
+                        <div class="quiz-card-header">
+                            <span class="subject-icon-wrapper">
+                                <i class="fab fa-linux subject-icon"></i>
+                                <span class="subject-name">Linux</span>
+                            </span>
+                            <span class="difficulty-badge easy">Easy</span>
+                        </div>
+                        <h3 class="quiz-title">Linux Basics</h3>
+                        <div class="quiz-meta">
+                            <span class="meta-item">
+                                <i class="fas fa-question-circle meta-icon"></i>
+                                <span>10 questions</span>
+                            </span>
+                            <span class="meta-item">
+                                <i class="fas fa-clock meta-icon"></i>
+                                <span>10 min</span>
+                            </span>
+                        </div>
+                        <div class="quiz-card-footer">
+                            <a href="/quiz/6/attempt" class="attempt-btn">
+                                Start Quiz <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <a href="/quiz/6" class="details-btn">
+                                <i class="fas fa-info-circle"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card" data-subject="Linux">
+                        <div class="quiz-card-header">
+                            <span class="subject-icon-wrapper">
+                                <i class="fab fa-linux subject-icon"></i>
+                                <span class="subject-name">Linux</span>
+                            </span>
+                            <span class="difficulty-badge medium">Medium</span>
+                        </div>
+                        <h3 class="quiz-title">Linux File System</h3>
+                        <div class="quiz-meta">
+                            <span class="meta-item">
+                                <i class="fas fa-question-circle meta-icon"></i>
+                                <span>10 questions</span>
+                            </span>
+                            <span class="meta-item">
+                                <i class="fas fa-clock meta-icon"></i>
+                                <span>10 min</span>
+                            </span>
+                        </div>
+                        <div class="quiz-card-footer">
+                            <a href="/quiz/7/attempt" class="attempt-btn">
+                                Start Quiz <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <a href="/quiz/7" class="details-btn">
+                                <i class="fas fa-info-circle"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- IoT Quizzes -->
+                    <div class="quiz-card" data-subject="IoT">
+                        <div class="quiz-card-header">
+                            <span class="subject-icon-wrapper">
+                                <i class="fas fa-microchip subject-icon"></i>
+                                <span class="subject-name">IoT</span>
+                            </span>
+                            <span class="difficulty-badge easy">Easy</span>
+                        </div>
+                        <h3 class="quiz-title">IoT Basics</h3>
+                        <div class="quiz-meta">
+                            <span class="meta-item">
+                                <i class="fas fa-question-circle meta-icon"></i>
+                                <span>10 questions</span>
+                            </span>
+                            <span class="meta-item">
+                                <i class="fas fa-clock meta-icon"></i>
+                                <span>10 min</span>
+                            </span>
+                        </div>
+                        <div class="quiz-card-footer">
+                            <a href="/quiz/11/attempt" class="attempt-btn">
+                                Start Quiz <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <a href="/quiz/11" class="details-btn">
+                                <i class="fas fa-info-circle"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card" data-subject="IoT">
+                        <div class="quiz-card-header">
+                            <span class="subject-icon-wrapper">
+                                <i class="fas fa-microchip subject-icon"></i>
+                                <span class="subject-name">IoT</span>
+                            </span>
+                            <span class="difficulty-badge medium">Medium</span>
+                        </div>
+                        <h3 class="quiz-title">Sensors & Actuators</h3>
+                        <div class="quiz-meta">
+                            <span class="meta-item">
+                                <i class="fas fa-question-circle meta-icon"></i>
+                                <span>10 questions</span>
+                            </span>
+                            <span class="meta-item">
+                                <i class="fas fa-clock meta-icon"></i>
+                                <span>10 min</span>
+                            </span>
+                        </div>
+                        <div class="quiz-card-footer">
+                            <a href="/quiz/12/attempt" class="attempt-btn">
+                                Start Quiz <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <a href="/quiz/12" class="details-btn">
+                                <i class="fas fa-info-circle"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RECENT ATTEMPTS TABLE -->
+            <div class="recent-attempts">
+                <h2><i class="fas fa-history"></i> Recent Attempts</h2>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Quiz Name</th>
+                                <th>Subject</th>
+                                <th>Date</th>
+                                <th>Score</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="quiz-name-cell">
+                                    <i class="fas fa-coffee"></i> Java Basics
+                                </td>
+                                <td><span class="subject-tag java">Java</span></td>
+                                <td>23 Mar 2024</td>
+                                <td><span class="score-badge good">18/20</span></td>
+                                <td><a href="/result/1" class="view-link"><i class="fas fa-eye"></i> View</a></td>
+                            </tr>
+                            <tr>
+                                <td class="quiz-name-cell">
+                                    <i class="fab fa-linux"></i> Linux Basics
+                                </td>
+                                <td><span class="subject-tag linux">Linux</span></td>
+                                <td>20 Mar 2024</td>
+                                <td><span class="score-badge average">15/20</span></td>
+                                <td><a href="/result/2" class="view-link"><i class="fas fa-eye"></i> View</a></td>
+                            </tr>
+                            <tr>
+                                <td class="quiz-name-cell">
+                                    <i class="fas fa-microchip"></i> IoT Basics
+                                </td>
+                                <td><span class="subject-tag iot">IoT</span></td>
+                                <td>18 Mar 2024</td>
+                                <td><span class="score-badge good">19/20</span></td>
+                                <td><a href="/result/3" class="view-link"><i class="fas fa-eye"></i> View</a></td>
+                            </tr>
+                            <tr>
+                                <td class="quiz-name-cell">
+                                    <i class="fas fa-coffee"></i> OOP in Java
+                                </td>
+                                <td><span class="subject-tag java">Java</span></td>
+                                <td>15 Mar 2024</td>
+                                <td><span class="score-badge average">14/20</span></td>
+                                <td><a href="/result/4" class="view-link"><i class="fas fa-eye"></i> View</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- PERFORMANCE OVERVIEW (CSS Bars) -->
+            <div class="performance-section">
+                <h2><i class="fas fa-chart-bar"></i> Performance Overview</h2>
+                <div class="chart-container">
+                    <div class="bars">
+                        <div class="bar-item">
+                            <div class="bar" style="height: 85px" data-value="85%">
+                                <span class="bar-label">85%</span>
+                            </div>
+                            <span class="bar-name">Java</span>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar" style="height: 72px" data-value="72%">
+                                <span class="bar-label">72%</span>
+                            </div>
+                            <span class="bar-name">Linux</span>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar" style="height: 78px" data-value="78%">
+                                <span class="bar-label">78%</span>
+                            </div>
+                            <span class="bar-name">IoT</span>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar" style="height: 90px" data-value="90%">
+                                <span class="bar-label">90%</span>
+                            </div>
+                            <span class="bar-name">Overall</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <%- include('partials/footer') %>
+</body>
+</html>

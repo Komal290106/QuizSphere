@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizSphere - <%= quiz.title %> Attempt</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/attempt.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <%- include('partials/header') %>
+
+    <main class="attempt-main">
+        <!-- Top Bar -->
+        <div class="attempt-top-bar">
+            <div class="quiz-title-wrapper">
+                <h1 class="attempt-quiz-title"><%= quiz.title %></h1>
+                <span class="total-questions-badge">
+                    <i class="fas fa-list-ol"></i> <%= questions.length %> Questions
+                </span>
+            </div>
+            <div class="timer-container" id="timer-container">
+                <div class="timer-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="timer-display" id="timer">
+                    00:<%= quiz.time.toString().padStart(2, '0') %>:00
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Attempt Layout -->
+        <div class="attempt-layout">
+            <!-- Left Panel - Question Area -->
+            <div class="question-panel" id="question-panel">
+                <div class="question-header">
+                    <div class="question-number-badge" id="question-number">Question 1 of <%= questions.length %></div>
+                </div>
+                
+                <div class="question-content" id="question-content">
+                    <!-- Question will be dynamically inserted by JavaScript -->
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="question-navigation">
+                    <button class="nav-btn prev-btn" id="prev-btn" disabled>
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </button>
+                    <div class="center-buttons">
+                        <button class="nav-btn mark-btn" id="mark-btn">
+                            <i class="fas fa-flag"></i> Mark for Review
+                        </button>
+                        <button class="nav-btn clear-btn" id="clear-btn">
+                            <i class="fas fa-eraser"></i> Clear Response
+                        </button>
+                    </div>
+                    <button class="nav-btn next-btn" id="next-btn">
+                        Save & Next <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Panel - Question Palette -->
+            <div class="question-palette">
+                <h3 class="palette-title">
+                    <i class="fas fa-th"></i> Question Palette
+                </h3>
+                
+                <div class="palette-grid" id="palette-grid">
+                    <!-- Question numbers will be dynamically generated -->
+                </div>
+
+                <!-- Legend -->
+                <div class="palette-legend">
+                    <h4>Legend</h4>
+                    <div class="legend-items">
+                        <div class="legend-item">
+                            <span class="legend-color not-visited"></span>
+                            <span>Not Visited</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color current"></span>
+                            <span>Current</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color answered"></span>
+                            <span>Answered</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color marked"></span>
+                            <span>Marked for Review</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button class="submit-quiz-btn" id="submit-quiz">
+                    <i class="fas fa-check-circle"></i> Submit Quiz
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <%- include('partials/footer') %>
+    
+<!-- Pass quiz data to JavaScript -->
+<script>
+window.quizData = {
+    questions: <%- JSON.stringify(questions) %>,
+    totalTime: <%= quiz.time * 60 %>,
+    quizTitle: "<%= quiz.title %>",
+    quizId: <%= quiz.id %>  // Add this line
+};
+</script>
+
+<script src="/js/quiz.js"></script>
+</body>
+</html>

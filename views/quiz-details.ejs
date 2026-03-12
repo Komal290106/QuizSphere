@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>QuizSphere - <%= quiz.title %></title>
+
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/header.css">
+<link rel="stylesheet" href="/css/footer.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<%- include('partials/header') %>
+
+<main class="quiz-details-main">
+
+<!-- BACK BUTTON -->
+
+<a href="/quiz" class="back-button">
+<i class="fas fa-arrow-left"></i> Back to Quizzes
+</a>
+
+
+<div class="quiz-details-container">
+
+
+<!-- LEFT ILLUSTRATION -->
+
+<div class="quiz-illustration">
+
+<% if (subject === 'Java') { %>
+<i class="fas fa-coffee illustration-icon"></i>
+
+<% } else if (subject === 'Linux') { %>
+<i class="fab fa-linux illustration-icon"></i>
+
+<% } else if (subject === 'IoT') { %>
+<i class="fas fa-microchip illustration-icon"></i>
+
+<% } else { %>
+<i class="fas fa-laptop-code illustration-icon"></i>
+
+<% } %>
+
+<div class="illustration-bg"></div>
+<div class="illustration-pattern"></div>
+
+</div>
+
+
+
+<!-- RIGHT INFO -->
+
+<div class="quiz-info-wrapper">
+
+<div class="quiz-info-card">
+
+<span class="quiz-subject-badge">
+
+<i class="fas 
+<% if (subject === 'Java') { %>fa-coffee<% } 
+else if (subject === 'Linux') { %>fa-linux<% } 
+else if (subject === 'IoT') { %>fa-microchip<% } 
+else { %>fa-laptop-code<% } %> 
+badge-icon"></i>
+
+<%= subject %>
+
+</span>
+
+
+<h1 class="quiz-title"><%= quiz.title %></h1>
+
+
+
+<!-- QUIZ STATS -->
+
+<div class="quiz-stats">
+
+
+<div class="stat-item">
+
+<i class="fas fa-question-circle stat-icon"></i>
+
+<div class="stat-info">
+
+<span class="stat-label">Questions</span>
+
+<span class="stat-value">
+<%= quiz.questions ? quiz.questions.length : 0 %>
+</span>
+
+</div>
+
+</div>
+
+
+
+<div class="stat-item">
+
+<i class="fas fa-clock stat-icon"></i>
+
+<div class="stat-info">
+
+<span class="stat-label">Time Limit</span>
+
+<span class="stat-value"><%= quiz.time %> minutes</span>
+
+</div>
+
+</div>
+
+
+
+<div class="stat-item difficulty <%= quiz.difficulty ? quiz.difficulty.toLowerCase() : 'easy' %>">
+
+<i class="fas fa-signal stat-icon"></i>
+
+<div class="stat-info">
+
+<span class="stat-label">Difficulty</span>
+
+<span class="stat-value"><%= quiz.difficulty || 'Easy' %></span>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+
+<!-- INSTRUCTIONS -->
+
+<div class="quiz-instructions">
+
+<h3>
+<i class="fas fa-clipboard-list"></i>
+Instructions
+</h3>
+
+<ul class="instructions-list">
+
+<li><i class="fas fa-check-circle"></i> Read each question carefully</li>
+
+<li><i class="fas fa-check-circle"></i> You cannot pause the timer once started</li>
+
+<li><i class="fas fa-check-circle"></i> Each question is worth 1 point</li>
+
+<li><i class="fas fa-check-circle"></i> No negative marking</li>
+
+<li><i class="fas fa-check-circle"></i> Click Start Quiz when ready</li>
+
+</ul>
+
+</div>
+
+
+
+<a href="/quiz/<%= quiz.id %>/attempt" class="start-quiz-btn">
+
+Start Quiz
+<i class="fas fa-arrow-right"></i>
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+
+<%- include('partials/footer') %>
+
+</body>
+</html>
